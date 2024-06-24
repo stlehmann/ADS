@@ -24,6 +24,7 @@
 #define _ADSLIB_H_
 
 #include "AdsDef.h"
+#include "Log.h"
 
 extern "C" {
 
@@ -215,6 +216,8 @@ long AdsSyncGetTimeoutEx(long port, uint32_t* timeout);
  * @return [ADS Return Code](http://infosys.beckhoff.de/content/1033/tc3_adsdll2/html/ads_returncodes.htm?id=17663)
  */
 long AdsSyncSetTimeoutEx(long port, uint32_t timeout);
+
+unsigned long SetLogLevel(size_t newLogLevel);
 
 }
 

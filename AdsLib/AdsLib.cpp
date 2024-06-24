@@ -332,3 +332,8 @@ long AdsSyncSetTimeoutEx(long port, uint32_t timeout)
     ASSERT_PORT(port);
     return GetRouter().SetTimeout((uint16_t)port, timeout);
 }
+
+unsigned long SetLogLevel(size_t newLogLevel) {
+    Logger::logLevel = newLogLevel;
+    return Logger::logLevel;
+}
