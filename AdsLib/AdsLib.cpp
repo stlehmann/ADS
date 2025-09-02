@@ -217,7 +217,7 @@ long AdsSyncWriteReqEx(long           port,
                        const void*    buffer)
 {
     ASSERT_PORT_AND_AMSADDR(port, pAddr);
-    if (!buffer) {
+    if (!buffer && bufferLength) {
         return ADSERR_CLIENT_INVALIDPARM;
     }
 
@@ -332,3 +332,4 @@ long AdsSyncSetTimeoutEx(long port, uint32_t timeout)
     ASSERT_PORT(port);
     return GetRouter().SetTimeout((uint16_t)port, timeout);
 }
+
