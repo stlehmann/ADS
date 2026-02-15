@@ -89,7 +89,7 @@ libs = [
   dependency('threads'),
 ]
 
-adslib = static_library('AdsLib',
+adslib = shared_library('AdsLib',
   [common_files, router_files],
   include_directories: inc,
   install: true,
