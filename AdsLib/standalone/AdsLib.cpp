@@ -31,7 +31,7 @@ namespace bhf
 {
 namespace ads
 {
-long AddLocalRoute(const AmsNetId ams, const char *ip)
+extern "C" long AddLocalRoute(const AmsNetId ams, const char *ip)
 {
 	try {
 		return GetRouter().AddRoute(ams, ip);
@@ -42,7 +42,7 @@ long AddLocalRoute(const AmsNetId ams, const char *ip)
 	}
 }
 
-void DelLocalRoute(const AmsNetId ams)
+extern "C" void DelLocalRoute(const AmsNetId ams)
 {
 	GetRouter().DelRoute(ams);
 }
@@ -96,7 +96,7 @@ long AdsSyncReadReqEx2(long port, const AmsAddr *pAddr, uint32_t indexGroup,
 	}
 }
 
-long AdsSyncReadDeviceInfoReqEx(long port, const AmsAddr *pAddr, char *devName,
+extern "C" long AdsSyncReadDeviceInfoReqEx(long port, const AmsAddr *pAddr, char *devName,
 				AdsVersion *version)
 {
 	ASSERT_PORT_AND_AMSADDR(port, pAddr);
@@ -124,7 +124,7 @@ long AdsSyncReadDeviceInfoReqEx(long port, const AmsAddr *pAddr, char *devName,
 	}
 }
 
-long AdsSyncReadStateReqEx(long port, const AmsAddr *pAddr, uint16_t *adsState,
+extern "C" long AdsSyncReadStateReqEx(long port, const AmsAddr *pAddr, uint16_t *adsState,
 			   uint16_t *devState)
 {
 	ASSERT_PORT_AND_AMSADDR(port, pAddr);
@@ -205,7 +205,7 @@ long AdsSyncWriteReqEx(long port, const AmsAddr *pAddr, uint32_t indexGroup,
 	}
 }
 
-long AdsSyncWriteControlReqEx(long port, const AmsAddr *pAddr,
+extern "C" long AdsSyncWriteControlReqEx(long port, const AmsAddr *pAddr,
 			      uint16_t adsState, uint16_t devState,
 			      uint32_t bufferLength, const void *buffer)
 {
@@ -228,7 +228,7 @@ long AdsSyncWriteControlReqEx(long port, const AmsAddr *pAddr,
 	}
 }
 
-long AdsSyncAddDeviceNotificationReqEx(long port, const AmsAddr *pAddr,
+extern "C" long AdsSyncAddDeviceNotificationReqEx(long port, const AmsAddr *pAddr,
 				       uint32_t indexGroup,
 				       uint32_t indexOffset,
 				       const AdsNotificationAttrib *pAttrib,
