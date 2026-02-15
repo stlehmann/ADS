@@ -188,10 +188,10 @@ extern "C" {
 	}
 	}
 
+	long AdsAddRoute(AmsNetId netId, const char* ipAddr);
+	void AdsDelRoute(AmsNetId netId);
+	void AdsSetLocalAddress(AmsNetId netId);
+
 #ifdef __cplusplus
 }
 #endif
-
-#define AdsAddRoute bhf::ads::AddLocalRoute
-#define AdsDelRoute bhf::ads::DelLocalRoute
-#define AdsSetLocalAddress bhf::ads::SetLocalAddress
