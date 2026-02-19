@@ -93,7 +93,7 @@ adslib = shared_library('adslib',
   [common_files, router_files],
   include_directories: inc,
   install: true,
-  prefix: '',
+  name_prefix: '',
 )
 
 install_libs = [ adslib ]
