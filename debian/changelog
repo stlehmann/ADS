@@ -1,0 +1,223 @@
+adstool (113.0.31-1) trixie; urgency=medium
+
+  * RegistryAccess: unescape '\' and '"' in string values, too
+  * adstool: document license onlineinfo command
+
+ -- Patrick Bruenn <p.bruenn@beckhoff.com>  Sat, 07 Feb 2026 09:09:12 +0000
+
+adstool (113.0.30-1) trixie; urgency=medium
+
+  * AmsResponse: fix deadlock in AmsResponse::Wait()
+  * meson: add support for pkg-config
+  * standalone/AdsLib: allow AdsWrite for zero length buffer
+  * adstool: sync manpage with usage()
+
+ -- Patrick Bruenn <p.bruenn@beckhoff.com>  Wed, 08 Oct 2025 11:27:56 +0200
+
+adstool (113.0.29-1) trixie; urgency=medium
+
+  * ci: build with Debian trixie(13)
+  * standalone/AmsRouter::AddRoute(): preserve exception type
+
+ -- Patrick Bruenn <p.bruenn@beckhoff.com>  Wed, 28 May 2025 12:08:06 +0200
+
+adstool (0.0.28-1) bookworm; urgency=medium
+
+  * Drop CHANGES file, use debian/changelog instead
+
+ -- Patrick Bruenn <p.bruenn@beckhoff.com>  Fri, 13 Dec 2024 07:48:56 +0100
+
+adstool (0.0.27-1) bookworm; urgency=medium
+
+  * AdsTool: add license onlineinfo
+  * LicenseAccess: Add ShowOnlineInfo()
+  * DCAccess: Add Distributed Clocks Diagnosis
+
+ -- Patrick Bruenn <p.bruenn@beckhoff.com>  Wed, 16 Oct 2024 12:27:35 +0100
+
+adstool (0.0.26-1) bookworm; urgency=medium
+
+  * ECatAccess: show slave count in 'ecat list-masters'
+
+ -- Patrick Bruenn <p.bruenn@beckhoff.com>  Wed, 21 Feb 2024 16:17:25 +0100
+
+adstool (0.0.25-1) bookworm; urgency=medium
+
+  * AdsTool: add rtime set-shared-cores <num_shared_cores> command
+    AdsTool: refactor RTimeAccess::ReadCpuSettings()
+    AdsTool: split usage for rtime command
+    RTimeAccess: implement SetSharedCores()
+
+ -- Patrick Bruenn <p.bruenn@beckhoff.com>  Fri, 12 Jan 2024 08:37:51 +0100
+
+adstool (0.0.24-1) bookworm; urgency=medium
+
+  * AdsTool: Add "ecat list-masters" to display all ethercat masters
+    AdsTool: Add "file find" to list files and directories
+    AdsTool: Add --maxdepth support for "file find"
+    RegistryAccess::Write(): fix dword parsing/calculation
+    SymbolAccess::Write(): uint8_t needs special treatment
+    SymbolAccess::Write(): parse integer values more strictly
+    SymbolAccess::Write(): stop accepting empty strings for integers
+    SymbolAccess::Write(): fill string with null bytes
+    SymbolAccess::Read(): stop reading more than we need
+    SymbolAccess::Write(): stop reading the values before write
+
+ -- Patrick Bruenn <p.bruenn@beckhoff.com>  Wed, 08 Nov 2023 14:07:13 +0100
+
+adstool (0.0.23-1) bullseye; urgency=medium
+
+  * AdsFile: add Find() to list files and directories
+    AdsFile::Find(): add --maxdepth support
+    AdsTool: refactor commandline parsing for file
+    SymbolAccess::Read(): stop reading more than we need
+    SymbolAccess::Write(): fill string with null bytes
+    SymbolAccess::Write(): parse integer values more strictly
+    SymbolAccess::Write(): stop accepting empty strings for integers
+    SymbolAccess::Write(): stop reading the values before write
+    SymbolAccess::Write(): uint8_t needs special treatment
+
+ -- Patrick Bruenn <p.bruenn@beckhoff.com>  Wed, 04 Oct 2023 10:49:31 +0200
+
+adstool (0.0.22-1) bullseye; urgency=medium
+
+  * AmsRouter: Stop holding global lock during connect
+        This will speed up scenarios connecting to different TwinCAT
+        routers in parallel. However, calling AddRoute() for the same
+        target host concurrently, will now leave only the last AmsNetId
+        usable. So make sure to avoid that case in your application.
+
+ -- Patrick Bruenn <p.bruenn@beckhoff.com>  Mon, 14 Aug 2023 11:14:18 +0200
+
+adstool (0.0.21-1) bullseye; urgency=medium
+
+  * TcAdsTool: ship with Debian package
+
+ -- Patrick Bruenn <p.bruenn@beckhoff.com>  Wed, 17 May 2023 16:41:33 +0100
+
+adstool (0.0.20-1) bullseye; urgency=medium
+
+  *  AdsTool: Extend .reg file format for deletion of keys
+     AdsTool: add startprocess command
+
+ -- Patrick Bruenn <p.bruenn@beckhoff.com>  Mon, 06 Mar 2023 10:12:53 +0100
+
+adstool (0.0.19-1) bullseye; urgency=medium
+
+  * AdsTool: add state --compare command
+    AdsTool: improve flag support
+
+ -- Patrick Bruenn <p.bruenn@beckhoff.com>  Fri, 27 Jan 2023 10:05:45 +0100
+
+adstool (0.0.18-1) bullseye; urgency=medium
+
+  * Adstool: RunFile: use larger buffers
+    AdsTool: "plc write-symbol <name> <value>" command
+    AdsTool: add "plc read-symbol <name>" command
+    AdsTool: add "plc show-symbols" command
+    AdsTool: actually print help message to stdout
+    AdsTool: expand hive abbreviation in help
+    RegistryAccess: accept shorter dword definitions
+    RegistryAccess: fix typo in error message
+
+ -- Patrick Bruenn <p.bruenn@beckhoff.com>  Fri, 13 Jan 2023 09:35:12 +0100
+
+adstool (0.0.17-1) bullseye; urgency=medium
+
+  * AdsTool: add support for registry access
+    AdsTool: fix binary output on stdout on Windows
+    Sockets: run WSAStartup() before getaddrinfo() on Windows
+
+ -- Patrick Bruenn <p.bruenn@beckhoff.com>  Tue, 20 Dec 2022 12:22:45 +0100
+
+adstool (0.0.16-1) bullseye; urgency=medium
+
+  * AdsTool: bump version to force debian release
+
+ -- Patrick Bruenn <p.bruenn@beckhoff.com>  Tue, 30 Aug 2022 11:11:04 +0200
+
+adstool (0.0.15-1) bullseye; urgency=medium
+
+  * RTimeAccess: use decimal output for plain numbers
+    RouterAccess: fix typo in error message
+    AdsDevice: use size_t for length parameter
+    AdsDevice: handle to long data gracefully
+    AddRemoteRoute: ignore to long values in UDP tags
+
+ -- Patrick Bruenn <p.bruenn@beckhoff.com>  Mon, 29 Aug 2022 10:58:55 +0200
+
+adstool (0.0.14-1) bullseye; urgency=medium
+
+  * AdsTool: fixed exit code for license commands
+
+ -- Julian Heuking <J.Heuking@beckhoff.com>  Thu, 02 Jun 2022 12:42:19 +0200
+
+adstool (0.0.13-1) bullseye; urgency=medium
+
+  * AdsTool: adjust manpage for TC/BSD and other variants
+    AdsTool: replace SYSTEMSERVICE_OPENGENERIC with FOPEN::READ
+    AdsTool: implement --retry
+    AdsDef: deprecate enum nSystemServiceOpenFile
+
+ -- Patrick Bruenn <p.bruenn@beckhoff.com>  Thu, 05 May 2022 14:23:58 +0200
+
+adstool (0.0.12-1) bullseye; urgency=medium
+
+  * AdsTool: repair var --type=BOOL/BYTE
+    AdsTool: fix endianess for var command
+
+ -- Patrick Bruenn <p.bruenn@beckhoff.com>  Fri, 04 Mar 2022 20:28:39 +0100
+
+adstool (0.0.11-1) bullseye; urgency=medium
+
+  * AdsLib: add IPv6 support
+    AdsLib: support variable TCP port for ADS destination
+    AdsTool: fix broken --log-level option
+
+ -- Patrick Bruenn <p.bruenn@beckhoff.com>  Mon, 21 Feb 2022 14:57:24 +0100
+
+adstool (0.0.10-1) bullseye; urgency=medium
+
+  * libads-dev: new package to easily install AdsLib as build dependency
+
+ -- Patrick Bruenn <p.bruenn@beckhoff.com>  Tue, 23 Nov 2021 11:31:06 +0100
+
+adstool (0.0.9-1) bullseye; urgency=medium
+
+  * release to bullseye
+
+ -- Julian Heuking <J.Heuking@beckhoff.com>  Thu, 21 Oct 2021 12:03:24 +0200
+
+adstool (0.0.8-1) buster; urgency=medium
+
+  * adstool: show usage() on stderr
+    adstool: support --help to show usage() on stdout
+    adstool: support --log-level to reduce or increase verbosity
+    adstool: support --version
+
+ -- Patrick Bruenn <p.bruenn@beckhoff.com>  Tue, 12 Oct 2021 11:22:48 +0200
+
+adstool (0.0.7-1) buster; urgency=medium
+
+  * adstool: add support to read volume license identifier
+    adstool: reduce verbosity
+
+ -- Patrick Bruenn <p.bruenn@beckhoff.com>  Thu, 07 Oct 2021 12:56:57 +0200
+
+adstool (0.0.6-2) buster; urgency=medium
+
+  * Version bump as we still had a bug in publish debian script
+
+ -- Patrick Bruenn <p.bruenn@beckhoff.com>  Thu, 12 Aug 2021 15:11:11 +0200
+
+adstool (0.0.6-1) buster; urgency=medium
+
+  * Version bump to force debian build and repo update
+
+ -- Patrick Bruenn <p.bruenn@beckhoff.com>  Thu, 12 Aug 2021 12:22:54 +0200
+
+adstool (0.0.5-1) buster; urgency=medium
+
+  * Initial release
+
+ -- Patrick Bruenn <p.bruenn@beckhoff.com>  Tue, 03 Aug 2021 13:24:52 +0200

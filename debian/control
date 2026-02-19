@@ -1,0 +1,32 @@
+Source: adstool
+Section: net
+Priority: optional
+Maintainer: Patrick Bruenn <p.bruenn@beckhoff.com>
+Uploaders: Julian Heuking <J.Heuking@beckhoff.com>
+Build-Depends:
+ debhelper (>=11~),
+ libadscomm-dev,
+ meson (>=0.49),
+ python3-sphinx,
+Standards-Version: 4.1.4
+
+Package: adstool
+Architecture: any
+Multi-Arch: foreign
+Depends: ${misc:Depends}, ${shlibs:Depends}
+Description: command line tool to access TwinCAT systems via ADS
+ ADS offers many possibilities to access TwinCAT systems. This tool
+ is intended to make use of that from the command line. With the 'raw'
+ command it should be possible to issue any ADS read/write access from your
+ command line. Additionally some comfort functions are implemented such as:
+  - access PLC variables
+  - access files
+  - access TwinCAT state
+
+Package: libads-dev
+Architecture: any
+Multi-Arch: foreign
+Depends: ${misc:Depends}, ${shlibs:Depends}
+Description: development files to use AdsLib
+ This library is intended to provide easy use as ADS client applications
+ running on Debian systems to communicate with TwinCAT devices via TCP/IP.

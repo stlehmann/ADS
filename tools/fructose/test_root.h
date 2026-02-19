@@ -44,6 +44,7 @@ Foundation, Inc., 51 Franklin Street, Fifth Floor, Boston, MA  02110-1301  USA
 #include <algorithm>
 #include <stdexcept>
 #include <sstream>
+#include <limits>
 
 #include <cstdlib>
 
@@ -62,6 +63,14 @@ Foundation, Inc., 51 Franklin Street, Fifth Floor, Boston, MA  02110-1301  USA
  * All unit test facilities associated are scoped to the fructose namespace.
  */
 namespace fructose {
+
+inline int uncaught_exceptions() noexcept {
+#ifndef __cpp_lib_uncaught_exceptions
+    return std::uncaught_exception();
+#else
+    return std::uncaught_exceptions();
+#endif
+}
 
 /**
  * Base class for test_base template.
@@ -579,7 +588,7 @@ test_root::test_root()
 inline
 test_root::~test_root()
 {
-    if (std::uncaught_exception())
+    if (uncaught_exceptions())
     {
         increase_error_count();
     }
@@ -1062,7 +1071,7 @@ void test_root::test_assert_same_data(const void* lhs, const void* rhs,
                                       const char* filename, int line_number)
 {
     set_assertion_tested();
-    unsigned int data_index(-1);
+    auto data_index = std::numeric_limits<unsigned int>::max();
     bool test_result = same_as(lhs, rhs, data_length, data_index);
     if (test_result == reverse_mode())
     {
@@ -1095,7 +1104,7 @@ inline
 bool test_root::same_as (const void* lhs, const void* rhs, unsigned int data_length, unsigned int& the_data_index)
 {
     bool retval = true;
-    unsigned int data_index = -1;
+    auto data_index = std::numeric_limits<unsigned int>::max();
     if (data_length == 0 || lhs == rhs)
     {
         retval = true;

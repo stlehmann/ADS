@@ -1,0 +1,31 @@
+#!/bin/sh
+# SPDX-License-Identifier: MIT
+# Copyright (C) Beckhoff Automation GmbH & Co. KG
+
+set -e
+set -u
+
+script_path="$(cd "$(dirname "$0")" && pwd)"
+readonly script_path
+readonly test_device="${1?Missing <test-device>}"
+
+# Copy all necessary files from test-runner container into the test-device.
+scp -r \
+	"${CI_PROJECT_DIR}/"* \
+	"${CI_PROJECT_DIR}/".ci \
+	"Administrator@${test_device}:"
+
+# Run our generic tests within the QEMU test-device. For this to work we have
+# to use the IP of the VM host, because the ADS ports are forwarded directly
+# into the VM.
+if ! container_ip="$(ip_route_src ads-server)"; then
+	printf 'Failed to detect container IP.\n' >&2
+	exit 1
+fi
+scp "${DONGLE_P94_LICENSE}" "Administrator@${test_device}:dongle-pl94.tclrs"
+ssh "Administrator@${test_device}" <<- EOF
+	export DONGLE_P94_LICENSE="dongle-pl94.tclrs"
+	export CI_JOB_NAME="${CI_JOB_NAME}"
+	.ci/run-build-and-test.sh
+EOF
+
