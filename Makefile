@@ -11,7 +11,7 @@ $(MANPAGE): $(DOCFILES)
 	make -C doc/ man
 
 build:
-	meson setup $@ -Dtcadsdll_include=/usr/include -Dtcadsdll_lib=/usr/lib
+	meson setup --reconfigure build
 
 install: $(BINARY) $(TCBINARY) $(MANPAGE)
 	install --mode=755 -D $(BINARY) "$(DESTDIR)$(prefix)/bin/$(notdir $(BINARY))"
