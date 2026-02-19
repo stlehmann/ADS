@@ -89,10 +89,11 @@ libs = [
   dependency('threads'),
 ]
 
-adslib = shared_library('AdsLib',
+adslib = shared_library('adslib',
   [common_files, router_files],
   include_directories: inc,
   install: true,
+  prefix: '',
 )
 
 install_libs = [ adslib ]
