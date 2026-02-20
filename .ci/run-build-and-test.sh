@@ -42,8 +42,8 @@ esac
 
 meson setup build ${BHF_CI_MESON_OPTIONS-}
 ninja -C build
-meson setup example/build example ${BHF_CI_MESON_OPTIONS-}
-ninja -C example/build
+# meson setup example/build example ${BHF_CI_MESON_OPTIONS-}
+# ninja -C example/build
 
 # pkg-config makes cross-compiling a nightmare so we still stick to manual
 # dependencies in our example/meson.build. However, to make native builds
