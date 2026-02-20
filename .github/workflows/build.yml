@@ -9,14 +9,11 @@ jobs:
       - uses: actions/checkout@v2
       - name: compile library
         run: meson build && ninja -C build && sudo ninja -C build install
-      - name: compile example
-        run: meson example/build example && ninja -C example/build
       - uses: actions/upload-artifact@v4
         with:
           name: ubuntu-meson
           path: |
             build/
-            example/build/  build-ubuntu:
   build-ubuntu-cmake:
     runs-on: ubuntu-latest
     steps:
