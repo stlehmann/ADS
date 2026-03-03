@@ -94,6 +94,7 @@ adslib = shared_library('adslib',
   include_directories: inc,
   install: true,
   name_prefix: '',
+  name_suffix: 'so',
 )
 
 install_libs = [ adslib ]
