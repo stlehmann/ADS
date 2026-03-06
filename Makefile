@@ -11,7 +11,8 @@ $(MANPAGE): $(DOCFILES)
 	make -C doc/ man
 
 build:
-	meson setup --wipe build
+	rm -rf build
+	meson setup build
 
 install: $(BINARY) $(TCBINARY) $(MANPAGE)
 	install --mode=755 -D $(BINARY) "$(DESTDIR)$(prefix)/bin/$(notdir $(BINARY))"
