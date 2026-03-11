@@ -95,6 +95,7 @@ adslib = shared_library('adslib',
   install: true,
   name_prefix: '',
   name_suffix: 'so',
+  dependencies: [dependency('threads')],
 )
 
 install_libs = [ adslib ]
