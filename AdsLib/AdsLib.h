@@ -13,6 +13,9 @@
 
 #include "Sockets.h"
 
+#ifdef __cplusplus
+extern "C" {
+#endif
 /**
  * Reads data synchronously from an ADS server.
  * @param[in] port port number of an Ads port that had previously been opened with AdsPortOpenEx().
@@ -188,3 +191,7 @@ long GetRemoteAddress(const std::string &remote, AmsNetId &netId);
 #define AdsAddRoute bhf::ads::AddLocalRoute
 #define AdsDelRoute bhf::ads::DelLocalRoute
 #define AdsSetLocalAddress bhf::ads::SetLocalAddress
+
+#ifdef __cplusplus
+}
+#endif
