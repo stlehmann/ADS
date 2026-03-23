@@ -5,7 +5,6 @@
 
 #include "AdsLib.h"
 #include "AmsRouter.h"
-
 extern "C" {
 	static AmsRouter &GetRouter()
 	{
@@ -287,4 +286,3 @@ extern "C" {
 		ASSERT_PORT(port);
 		return GetRouter().SetTimeout((uint16_t)port, timeout);
 	}
-}
