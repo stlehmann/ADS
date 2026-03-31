@@ -95,6 +95,15 @@ adslib = static_library('AdsLib',
   install: true,
 )
 
+adslib_so = shared_library('adslib',
+  [common_files, router_files],
+  include_directories: inc,
+  install: true,
+  name_prefix: '',
+  name_suffix: 'so',
+  dependencies: [dependency('threads')],
+)
+
 install_libs = [ adslib ]
 
 adslib_dep = declare_dependency(
