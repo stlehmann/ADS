@@ -13,6 +13,9 @@
 
 #include "Sockets.h"
 
+#ifdef BHF_ADS_EXPORT_C
+extern "C" {
+#endif
 long AdsAddRoute(AmsNetId ams, const char *ip);
 void AdsDelRoute(AmsNetId ams);
 void AdsSetLocalAddress(AmsNetId ams);
@@ -139,6 +142,9 @@ long AdsSyncDelDeviceNotificationReqEx(long port, const AmsAddr *pAddr,
  * @return [ADS Return Code](https://infosys.beckhoff.com/content/1031/tcadscommon/html/ads_returncodes.htm?id=1666172286265530469)
  */
 long AdsSyncGetTimeoutEx(long port, uint32_t *timeout);
+#ifdef BHF_ADS_EXPORT_C
+}
+#endif
 
 namespace bhf
 {

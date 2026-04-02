@@ -54,6 +54,9 @@ void SetLocalAddress(const AmsNetId ams)
 }
 }
 
+#ifdef BHF_ADS_EXPORT_C
+extern "C" {
+#endif
 long AdsPortCloseEx(long port)
 {
 	ASSERT_PORT(port);
@@ -286,3 +289,6 @@ long AdsSyncSetTimeoutEx(long port, uint32_t timeout)
 	ASSERT_PORT(port);
 	return GetRouter().SetTimeout((uint16_t)port, timeout);
 }
+#ifdef BHF_ADS_EXPORT_C
+}
+#endif
