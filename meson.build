@@ -95,7 +95,15 @@ adslib = static_library('AdsLib',
   install: true,
 )
 
-install_libs = [ adslib ]
+adslib_so = shared_library('adslib',
+  [common_files, router_files],
+  cpp_args: '-DBHF_ADS_EXPORT_C',
+  include_directories: inc,
+  install: true,
+  dependencies: libs,
+)
+
+install_libs = [ adslib, adslib_so ]
 
 adslib_dep = declare_dependency(
   include_directories : inc,
