@@ -1,0 +1,3 @@
+# Treat all C/C++ source and header files as text with UNIX endings
+*.h text eol=lf
+*.cpp text eol=lf
