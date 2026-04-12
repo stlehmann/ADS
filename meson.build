@@ -97,8 +97,10 @@ adslib = static_library('AdsLib',
 
 adslib_so = shared_library('adslib',
   [common_files, router_files],
-  cpp_args: '-DBHF_ADS_EXPORT_C',
-  cpp_args: '-DBHF_ADS_USE_TWINCAT_ORDER',
+  cpp_args: [
+    '-DBHF_ADS_EXPORT_C',
+    '-DBHF_ADS_USE_TWINCAT_ORDER',
+  ],
   include_directories: inc,
   install: true,
   dependencies: libs,
