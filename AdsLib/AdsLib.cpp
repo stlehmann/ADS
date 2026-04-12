@@ -203,3 +203,18 @@ long GetRemoteAddress(const std::string &remote, AmsNetId &netId)
 }
 }
 }
+
+long AdsAddRoute(const AmsNetId ams, const char *ip)
+{
+	return bhf::ads::AddLocalRoute(ams, ip);
+}
+
+void AdsDelRoute(const AmsNetId ams)
+{
+	bhf::ads::DelLocalRoute(ams);
+}
+
+void AdsSetLocalAddress(const AmsNetId ams)
+{
+	bhf::ads::SetLocalAddress(ams);
+}
