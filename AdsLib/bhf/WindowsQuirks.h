@@ -12,6 +12,13 @@
 
 namespace bhf
 {
+static inline void ForceBinaryInputOnWindows()
+{
+#if defined(_WIN32) || defined(__CYGWIN__)
+	(void)_setmode(_fileno(stdin), O_BINARY);
+#endif
+}
+
 static inline void ForceBinaryOutputOnWindows()
 {
 #if defined(_WIN32) || defined(__CYGWIN__)

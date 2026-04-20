@@ -415,6 +415,7 @@ int RunFile(const AmsNetId netid, const uint16_t port, const std::string &gw,
 		const auto path = args.Pop<std::string>("path is missing");
 		const AdsFile adsFile{ device, path, flags };
 		std::vector<char> buf(1024 * 1024); // 1MB
+		bhf::ForceBinaryInputOnWindows();
 		auto length = read(0, buf.data(), buf.size());
 		while (length > 0) {
 			adsFile.Write(length, buf.data());
