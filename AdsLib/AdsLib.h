@@ -188,9 +188,9 @@ long GetRemoteAddress(const std::string &remote, AmsNetId &netId);
 }
 }
 
-#define AdsAddRoute bhf::ads::AddLocalRoute
-#define AdsDelRoute bhf::ads::DelLocalRoute
-#define AdsSetLocalAddress bhf::ads::SetLocalAddress
+long AdsAddRoute(AmsNetId netId, const char* ipAddr);
+void AdsDelRoute(AmsNetId netId);
+void AdsSetLocalAddress(AmsNetId netId);
 
 #ifdef __cplusplus
 }
