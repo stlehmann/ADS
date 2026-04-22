@@ -287,4 +287,16 @@ long AdsSyncSetTimeoutEx(long port, uint32_t timeout)
 	ASSERT_PORT(port);
 	return GetRouter().SetTimeout((uint16_t)port, timeout);
 }
+
+long AdsAddRoute(AmsNetId netId, const char* ipAddr) {
+	return bhf::ads::AddLocalRoute(netId, ipAddr);
+}
+
+void AdsDelRoute(AmsNetId netId) {
+	bhf::ads::DelLocalRoute(netId);
+}
+
+void AdsSetLocalAddress(AmsNetId netId) {
+	bhf::ads::SetLocalAddress(netId);
+}
 }
