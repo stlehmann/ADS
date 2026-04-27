@@ -1,3 +1,13 @@
+adstool (113.0.33-1) trixie; urgency=medium
+
+  * AdsNotificationHeader: add BHF_ADS_USE_TWINCAT_ORDER
+  * meson: build a shared library for the standalone version
+  * AdsLib: Add extern "C" to allow shared library exports
+  * AdsLib: replace #define by wrapper functions
+  * AdsTool: ForceBinaryInputOnWindows on stdin
+
+ -- Patrick Bruenn <p.bruenn@beckhoff.com>  Mon, 27 Apr 2026 08:54:55 +0000
+
 adstool (113.0.32-1) trixie; urgency=medium
 
   * RouterAccess: print PCI addresses as hex + 64bit
